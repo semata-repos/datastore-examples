@@ -61,11 +61,11 @@ for $product in $products
 end
 
 var $lines =
-"lines" : [
+[
     {"quantity" : 2, "productCode" : "10002"},
     {"quantity" : 3, "productCode" : "20004"}
 ];
-for $line in $order("lines")
+for $line in $lines
     create orderLine (quantity = $line("quantity")) add to order[.orderno = "001"].lines, product[.code = $line("productCode")].orderedOn
 end
 
